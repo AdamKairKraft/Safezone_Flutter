@@ -26,6 +26,16 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<!-- The local dev backend (docker compose, no TLS) needs plain HTTP allowed for
+	     local/private-network hosts - covers localhost (simulator) and a dev machine's
+	     LAN IP (physical device on the same WiFi, set via the dart-define API_BASE_URL
+	     build option). Scoped to local networking only, not a blanket ATS bypass; a
+	     real deployed backend should be HTTPS and needs no exception here. -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

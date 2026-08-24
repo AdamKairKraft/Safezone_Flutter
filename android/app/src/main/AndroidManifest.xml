@@ -1,4 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The debug/profile manifests already carry this (Flutter's default, for the
+         debugger/hot-reload connection), but a real release build needs it declared
+         here too - this is a genuinely networked app, not just a dev-time convenience. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="safezone_tablet"
         android:name="${applicationName}"
